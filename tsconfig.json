@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "lib": ["es5", "es6", "dom"],
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true
+  },
+  "files": ["src/index.ts"]
+}
