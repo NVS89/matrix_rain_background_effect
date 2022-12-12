@@ -14,8 +14,8 @@ class App {
 
     timerDelta = 0
 
-    constructor() {
-        this.canvas = document.getElementById('canvas') as HTMLCanvasElement
+    constructor(private window: Window, private document: Document) {
+        this.canvas = this.document.getElementById('canvas') as HTMLCanvasElement
         this.ctx = this.canvas.getContext('2d')
         this.effect = new Effect(this.canvas.width, this.canvas.height, this.FONT_SIZE)
 
@@ -27,7 +27,13 @@ class App {
 
     main() {
         this.animate(0)
-        
+        this.window.addEventListener('resize', this.resizeHendler.bind(this))
+    }
+
+    private resizeHendler () {
+        this.canvas.width = this.window.innerWidth
+        this.canvas.height = this.window.innerHeight
+        this.effect.resize(this.canvas.width, this.canvas.height)
     }
 
     animate(timeStamp: number) {
@@ -55,4 +61,4 @@ class App {
     }
 }
 
-const app = new App()
+const app = new App(window, document)
